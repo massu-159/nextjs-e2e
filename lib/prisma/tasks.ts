@@ -56,6 +56,7 @@ export async function deleteTask({ taskId }: TaskId) {
   } catch (error: any) {
     return { error }
   }
+}
 export async function updateTask(task: UpdateTaskInput,{ taskId }: TaskId) {
   try {
     const updatedTask = await prisma.task.update({
