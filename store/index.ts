@@ -1,17 +1,17 @@
 import { Task } from '@prisma/client'
-import create from 'zustand/react'
+import create from 'zustand'
 
 type EditedTask = Omit<Task, 'createdAt' | 'updatedAt' | 'userId'>
 
 type State = {
   editedTask: EditedTask
-  updatedEditedTask: (payload: EditedTask) => void
+  updateEditedTask: (payload: EditedTask) => void
   resetEditedTask: () => void
 }
 
 const useStore = create<State>((set) => ({
   editedTask: { id: '', title: '', completed: false },
-  updatedEditedTask: (payload) =>
+  updateEditedTask: (payload) =>
     set({
       editedTask: payload,
     }),

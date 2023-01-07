@@ -67,7 +67,7 @@ export async function updateTask(task: UpdateTaskInput,{ taskId }: TaskId) {
         ...task,
       }
     })
-    return { updatedTask }
+    return { task: updatedTask }
   } catch (error: any) {
     return { error }
   }
