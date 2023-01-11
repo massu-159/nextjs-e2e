@@ -1,27 +1,82 @@
-# Next.js + Tailwind CSS Example
+# nextjs-e2e-test-playwright-sample
+e2eテストのアウトプットとして、playwrightを使った　アプリケーションを作成。
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.2)](https://tailwindcss.com/blog/tailwindcss-v3-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+next-authによる認証機能。
 
-## Deploy your own
+[yup](https://www.npmjs.com/package/yup)でフォームのバリデーションチェック
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+[zustand](https://github.com/pmndrs/zustand)で状態管理
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+ORMにprismaを使用
 
-## How to use
+E2Eテスト自動化には[playwright](https://playwright.dev/)を使用
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+urlはこちら
+https://github.com/massu-159/nextjs-e2e-test-playwright-sample
 
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
+
+## 目次
+1. 環境構築
+2. アプリケーションの仕様
+
+## 1. 環境構築
+
+### 1-1. ライブラリ インストール
+
+```
+npm install
+
+または
+
+yarn
 ```
 
-```bash
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
+### 1-2. アプリケーション実行
+
+```
+npm run dev
+
+または
+
+yarn dev
 ```
 
-```bash
-pnpm create next-app --example with-tailwindcss with-tailwindcss-app
+### 1-3. 環境変数設定
+
+ルートディレクトリに.envファイルを作成し、環境変数を設定してください(prismaの設定に使用)
+```
+DATABASE_URL="postgresql://xxxxx:xxxxxx@localhost:xxxx/xxxxx?schema=public"
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+ルートディレクトリに.env.localファイルを作成し、環境変数を設定してください(next-authの設定に使用)
+```
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=xxxxxxxxxxxxxxxxxx
+
+GITHUB_CLIENT_ID=xxxxxxxxxxxxxxxxxx
+GITHUB_CLIENT_SECRET=xxxxxxxxxxxxxxxxxx
+```
+
+## 2. アプリケーションの仕様
+
+### 2-1. 仕様
+- Taskリスト
+  - Task一覧表示
+  - Task作成処理
+  - Task更新処理
+  - Task削除処理
+- 認証
+  - ログイン(GitHub)　
+  - ログアウト(GitHub)
+
+
+### 2-2. 構成技術
+- "next": "13.0.6"
+- "react": "^18.2.0"
+- "react-dom": "^18.2.0"
+- "axios": "^0.27.2"
+- "yup": "0.32.11",
+- "zustand": "4.0.0"
+- "prisma": "^4.7.1",
+- "tailwindcss": "^3.2.4"
+- "@playwright/test": "^1.29.0"
